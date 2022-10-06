@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"strconv"
+)
 
 func normalFunction(message string) {
 	fmt.Println(message)
@@ -105,9 +109,9 @@ func variablesConstantesZeroValues() {
 	fmt.Println(a, b, c, d)
 }
 
-func usoCiclosFor(){
+func usoCiclosFor() {
 	// For condicional
-	for i:= 0; i <= 10; i++ {
+	for i := 0; i <= 10; i++ {
 		fmt.Println(i)
 	}
 
@@ -132,6 +136,40 @@ func usoCiclosFor(){
 	}
 	fmt.Println("Counter Forever")
 	fmt.Println(counterForever)
+}
+
+func usoIf() {
+	valor1 := 1
+	valor2 := 2
+
+	if valor1 == 1 {
+		fmt.Println("Es 1")
+	} else {
+		fmt.Println("No es 1")
+	}
+
+	// With and
+	if valor1 == 1 && valor2 == 2 {
+		fmt.Println("Es verdad")
+	}
+
+	// With or
+	if valor1 == 1 || valor2 == 0 {
+		fmt.Println("Esta condicion con OR es verdadera")
+	}
+
+	// Convertir texto a numero
+	value, err := strconv.Atoi("53")
+	if err != nil {
+		/*
+		 En Go, nil es el valor cero para punteros, interfaces, mapas, slices, canales y funciones;
+		 y corresponde a la representación de un valor no inicializado. 
+		 Pero ojo, es muy importante no confundir valor “no inicializado” con estado indeterminado, 
+		 pues nil no es más que otro posible valor válido.
+		*/
+		log.Fatal(err)
+	}
+	fmt.Println("Value: ", value)
 }
 
 func main() {
@@ -173,4 +211,9 @@ func main() {
 	fmt.Printf("\n\n\n")
 	fmt.Println("##### Uso de ciclos for #####")
 	usoCiclosFor()
+
+	// Uso de condicional if
+	fmt.Printf("\n\n\n")
+	fmt.Println("##### Uso de condicional if #####")
+	usoIf()
 }
