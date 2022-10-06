@@ -163,13 +163,44 @@ func usoIf() {
 	if err != nil {
 		/*
 		 En Go, nil es el valor cero para punteros, interfaces, mapas, slices, canales y funciones;
-		 y corresponde a la representación de un valor no inicializado. 
-		 Pero ojo, es muy importante no confundir valor “no inicializado” con estado indeterminado, 
+		 y corresponde a la representación de un valor no inicializado.
+		 Pero ojo, es muy importante no confundir valor “no inicializado” con estado indeterminado,
 		 pues nil no es más que otro posible valor válido.
 		*/
 		log.Fatal(err)
 	}
 	fmt.Println("Value: ", value)
+}
+
+func usoSwitch() {
+	modulo := 5 % 2
+	switch modulo {
+	case 0:
+		fmt.Println("Es par")
+	default:
+		fmt.Println("Es impar")
+	}
+
+	// Esto tambien se puede hacer, declarando la variable en la misma linea del switch
+	/*
+		switch modulo := 4 % 2; modulo {
+		case 0:
+			fmt.Println("Es par")
+		default:
+			fmt.Println("Es impar")
+		}
+	*/
+
+	// Sin condicion
+	value := 200
+	switch {
+	case value > 100:
+		fmt.Println("Es mayor que 100")
+	case value < 0:
+		fmt.Println("Es menor a cero")
+	default:
+		fmt.Println("No hay condicion")
+	}
 }
 
 func main() {
@@ -216,4 +247,9 @@ func main() {
 	fmt.Printf("\n\n\n")
 	fmt.Println("##### Uso de condicional if #####")
 	usoIf()
+
+	// Uso de switch
+	fmt.Printf("\n\n\n")
+	fmt.Println("##### Uso de switch #####")
+	usoSwitch()
 }
