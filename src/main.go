@@ -297,6 +297,28 @@ func recorridoArraysSlices() {
 
 }
 
+func usoMaps() {
+	mapa := make(map[string]int)
+	fmt.Println("Mapa vacio: ", mapa)
+
+	mapa["Jose"] = 14
+	mapa["Pepito"] = 20
+	fmt.Println("Mapa con valores: ", mapa)
+
+	for index, value := range mapa {
+		fmt.Println(index, value)
+	}
+
+	// Encontrar un valor
+	value := mapa["Jose"]
+	fmt.Println("Edad de Jose: ", value)
+
+	// Saber si un valor existe
+	value, ok := mapa["Maria"] // Esta llave no existe en el mapa, pero no generara ningun error, sino que retornara un 0, ok retornara true o false dependiendo de si existe o no
+	fmt.Println("Valor inexistente: ", value, ok) // "0 false"
+
+}
+
 func main() {
 	// Variables, constantes y Zero Values
 	fmt.Println("##### Variables, constantes y zero values #####")
@@ -361,4 +383,9 @@ func main() {
 	fmt.Printf("\n\n\n")
 	fmt.Println("##### Recorrido de arrays y slices #####")
 	recorridoArraysSlices()
+
+	// Uso de maps
+	fmt.Printf("\n\n\n")
+	fmt.Println("##### Uso de maps #####")
+	usoMaps()
 }
