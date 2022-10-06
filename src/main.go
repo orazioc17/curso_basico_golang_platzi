@@ -269,6 +269,34 @@ func usoArraysSlices() {
 	fmt.Println(slice)
 }
 
+func isPalindromo(text string) string{
+	var textReversed string
+	for i := len(text) - 1; i>= 0; i-- {
+		textReversed += string(text[i]) // Aqui se convierte a string porque si no retornaria el codigo ascii
+	}
+
+	if text == textReversed {
+		return "Es palindromo"
+	} else {
+		return "No es palindromo"
+	}
+}
+
+func recorridoArraysSlices() {
+	slice := []string{"hola", "que", "hace"}
+
+	for index, value := range slice {
+		fmt.Println(index, value)
+	}
+	// Si solo queremos el indice, al usar solo una variable con range, esta devuelve unicamente el indice
+	
+	fmt.Println()
+	fmt.Println("ana: ", isPalindromo("ana"))
+	fmt.Println("arepera: ", isPalindromo("arepera"))
+	fmt.Println("Tienda: ", isPalindromo("Tienda"))
+
+}
+
 func main() {
 	// Variables, constantes y Zero Values
 	fmt.Println("##### Variables, constantes y zero values #####")
@@ -328,4 +356,9 @@ func main() {
 	fmt.Printf("\n\n\n")
 	fmt.Println("##### arrays y slices #####")
 	usoArraysSlices()
+
+	// Recorrido de arrays y slices
+	fmt.Printf("\n\n\n")
+	fmt.Println("##### Recorrido de arrays y slices #####")
+	recorridoArraysSlices()
 }
