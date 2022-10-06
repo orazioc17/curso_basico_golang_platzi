@@ -105,6 +105,35 @@ func variablesConstantesZeroValues() {
 	fmt.Println(a, b, c, d)
 }
 
+func usoCiclosFor(){
+	// For condicional
+	for i:= 0; i <= 10; i++ {
+		fmt.Println(i)
+	}
+
+	fmt.Printf("\n\n")
+
+	// for while
+	counter := 0
+	for counter < 10 {
+		fmt.Println(counter)
+		counter++
+	}
+
+	fmt.Printf("\n\n")
+
+	// for forever
+	counterForever := 0
+	for {
+		counterForever++
+		if counterForever >= 100 {
+			break
+		}
+	}
+	fmt.Println("Counter Forever")
+	fmt.Println(counterForever)
+}
+
 func main() {
 	// Variables, constantes y Zero Values
 	fmt.Println("##### Variables, constantes y zero values #####")
@@ -126,7 +155,7 @@ func main() {
 
 	// Uso de funciones
 	fmt.Printf("\n\n\n")
-	fmt.Println("Uso de funciones")
+	fmt.Println("##### Uso de funciones #####")
 	normalFunction("Esto es un mensaje")
 	tripleArgument(3, 5, "Esto es una cadena")
 
@@ -139,4 +168,9 @@ func main() {
 	// De esta forma se descarte uno de los valores retornados por la funcion
 	value1, _ = doubleReturn(10)
 	fmt.Printf("Value 1: %d\n", value1)
+
+	// Uso de ciclo for
+	fmt.Printf("\n\n\n")
+	fmt.Println("##### Uso de ciclos for #####")
+	usoCiclosFor()
 }
