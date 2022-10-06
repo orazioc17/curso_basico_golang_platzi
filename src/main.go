@@ -19,29 +19,31 @@ func doubleReturn(a int) (b, c int) {
 	return a, a * 2
 }
 
-func main() {
-	// Declaracion de constantes
-	const pi float64 = 3.14
-	const pi2 = 3.1415
-	fmt.Println(pi, pi2)
-	fmt.Println("pi: ", pi)
+func usoFmt() {
+	helloMessage := "Hello"
+	worldMessage := "World"
 
-	// Declaracion de variables enteras
-	base := 12 // Asi se pueden crear y asignar directamente variables sin tener que usar mas palabras reservadas
-	fmt.Println(base)
-	var altura int = 14 // Y asi se inicializa con "var"
-	var area int        // Y esta es la ultima forma, creando la variable sin inicializarla
-	area = 3
-	fmt.Println(altura, area)
+	fmt.Println(helloMessage, worldMessage)
 
-	// Zero values
-	var a int
-	var b float64
-	var c string
-	var d bool
-	fmt.Println("\nZero values")
-	fmt.Println(a, b, c, d)
+	// Uso de printf
+	nombre := "Platzi"
+	cursos := 500
 
+	// La buena practica es agregar el tipo de dato correspondiente, pero si no se tiene cereza del tipo de dato que se
+	// va a imprimir, se puede usar $v
+	fmt.Printf("%s tiene mas de %d cursos\n", nombre, cursos)
+	fmt.Printf("%v tiene mas de %v cursos\n", nombre, cursos)
+
+	// Sprintf
+	message := fmt.Sprintf("%s tiene mas de %d cursos", nombre, cursos)
+	fmt.Println(message)
+
+	// Conocer el tipo de dato de una variable
+	fmt.Printf("helloMessahe: %T\n", helloMessage)
+	fmt.Printf("Cursos: %T\n", cursos)
+}
+
+func operadoresAritmeticos() {
 	// Area cuadrado
 	const baseCuadrado = 10
 	areaCuadrado := baseCuadrado * baseCuadrado
@@ -77,33 +79,50 @@ func main() {
 	// Decremental
 	x--
 	fmt.Println("Decremental: ", x)
+}
 
+func variablesConstantesZeroValues() {
+	// Declaracion de constantes
+	const pi float64 = 3.14
+	const pi2 = 3.1415
+	fmt.Println(pi, pi2)
+	fmt.Println("pi: ", pi)
+
+	// Declaracion de variables enteras
+	base := 12 // Asi se pueden crear y asignar directamente variables sin tener que usar mas palabras reservadas
+	fmt.Println(base)
+	var altura int = 14 // Y asi se inicializa con "var"
+	var area int        // Y esta es la ultima forma, creando la variable sin inicializarla
+	area = 3
+	fmt.Println(altura, area)
+
+	// Zero values
+	var a int
+	var b float64
+	var c string
+	var d bool
+	fmt.Println("\nZero values")
+	fmt.Println(a, b, c, d)
+}
+
+func main() {
+	// Variables, constantes y Zero Values
+	fmt.Println("##### Variables, constantes y zero values #####")
+	variablesConstantesZeroValues()
+
+	// Operadores Aritmeticos
+	fmt.Println()
+	fmt.Println()
+	fmt.Println()
+	fmt.Println("##### Operadores Aritmeticos #####")
+	operadoresAritmeticos()
+
+	// Paquete fmt
 	fmt.Println()
 	fmt.Println()
 	fmt.Println()
 	fmt.Println("##### Paquete fmt #####")
-
-	helloMessage := "Hello"
-	worldMessage := "World"
-
-	fmt.Println(helloMessage, worldMessage)
-
-	// Uso de printf
-	nombre := "Platzi"
-	cursos := 500
-
-	// La buena practica es agregar el tipo de dato correspondiente, pero si no se tiene cereza del tipo de dato que se
-	// va a imprimir, se puede usar $v
-	fmt.Printf("%s tiene mas de %d cursos\n", nombre, cursos)
-	fmt.Printf("%v tiene mas de %v cursos\n", nombre, cursos)
-
-	// Sprintf
-	message := fmt.Sprintf("%s tiene mas de %d cursos", nombre, cursos)
-	fmt.Println(message)
-
-	// Conocer el tipo de dato de una variable
-	fmt.Printf("helloMessahe: %T\n", helloMessage)
-	fmt.Printf("Cursos: %T\n", cursos)
+	usoFmt()
 
 	// Uso de funciones
 	fmt.Printf("\n\n\n")
@@ -119,5 +138,5 @@ func main() {
 
 	// De esta forma se descarte uno de los valores retornados por la funcion
 	value1, _ = doubleReturn(10)
-	fmt.Printf("Value 1: %d\n", value1) 
+	fmt.Printf("Value 1: %d\n", value1)
 }
