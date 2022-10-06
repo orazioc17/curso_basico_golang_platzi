@@ -203,6 +203,37 @@ func usoSwitch() {
 	}
 }
 
+func usoDeferBreakContinue() {
+
+	// Continue
+	fmt.Println("Ejemplo continue")
+	for i := 1; i < 10; i++ {
+		if i % 2 == 0 {
+			continue
+		}
+		fmt.Println(i)
+	}
+
+	// Break
+	fmt.Printf("\nEjemplo break\n")
+	counter := 0
+	for {
+		if counter >= 9 {
+			fmt.Println("Saliendo del for forever")
+			break
+		}
+		fmt.Println(counter)
+		counter++
+	}
+
+	// Defer
+	// Defer lo que hace es que la funcion que se use se realice al final, por lo que es util para, por ejemplo
+	// terminar una conexion con una base de datos cuando se termine de usar
+	fmt.Println()
+	defer fmt.Println("Hola")
+	fmt.Println("Mundo")
+}
+
 func main() {
 	// Variables, constantes y Zero Values
 	fmt.Println("##### Variables, constantes y zero values #####")
@@ -252,4 +283,9 @@ func main() {
 	fmt.Printf("\n\n\n")
 	fmt.Println("##### Uso de switch #####")
 	usoSwitch()
+
+	// Uso de defer, break y continue
+	fmt.Printf("\n\n\n")
+	fmt.Println("##### Uso de defer, break y continue #####")
+	usoDeferBreakContinue()
 }
