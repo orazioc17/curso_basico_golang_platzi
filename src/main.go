@@ -60,4 +60,32 @@ func main() {
 	// Decremental
 	x--
 	fmt.Println("Decremental: ", x)
+
+	fmt.Println()
+	fmt.Println()
+	fmt.Println()
+	fmt.Println("##### Paquete fmt #####")
+
+	helloMessage := "Hello"
+	worldMessage := "World"
+
+	fmt.Println(helloMessage, worldMessage)
+
+	// Uso de printf
+	nombre := "Platzi"
+	cursos := 500
+
+	// La buena practica es agregar el tipo de dato correspondiente, pero si no se tiene cereza del tipo de dato que se 
+	// va a imprimir, se puede usar $v
+	fmt.Printf("%s tiene mas de %d cursos\n", nombre, cursos)
+	fmt.Printf("%v tiene mas de %v cursos\n", nombre, cursos)
+
+	// Sprintf
+	message := fmt.Sprintf("%s tiene mas de %d cursos", nombre, cursos)
+	fmt.Println(message)
+
+	// Conocer el tipo de dato de una variable
+	fmt.Printf("helloMessahe: %T\n", helloMessage)
+	fmt.Printf("Cursos: %T\n", cursos)
+	
 }
