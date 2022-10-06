@@ -208,7 +208,7 @@ func usoDeferBreakContinue() {
 	// Continue
 	fmt.Println("Ejemplo continue")
 	for i := 1; i < 10; i++ {
-		if i % 2 == 0 {
+		if i%2 == 0 {
 			continue
 		}
 		fmt.Println(i)
@@ -232,6 +232,41 @@ func usoDeferBreakContinue() {
 	fmt.Println()
 	defer fmt.Println("Hola")
 	fmt.Println("Mundo")
+}
+
+func usoArraysSlices() {
+	// Array
+	fmt.Println("Array")
+	var array [4]int
+	fmt.Println(array)
+	array[0] = 1
+	array[1] = 2
+	// cap indica la capacidad del array o el slice
+	fmt.Println(array, len(array), cap(array))
+
+	// Slice
+	fmt.Println("\nSlice")
+	slice := []int{0, 1, 2, 3, 4, 5, 6}
+	fmt.Println(slice, len(slice), cap(slice))
+
+	// Metodos en el slice
+	// En los corchetes, el primer elemento es inclusivo pero el segundo no, es decir, va hasta antes de ese elemento
+	fmt.Println("\nSlicing")
+	fmt.Println(slice[0])
+	fmt.Println(slice[:3])
+	fmt.Println(slice[2:4])
+	fmt.Println(slice[4:])
+
+	// Append
+	fmt.Println("\nAppend")
+	slice = append(slice, 7)
+	fmt.Println(slice)
+
+	// Append nuevo slice
+	fmt.Println("\nAppend nuevo slice")
+	newSlice := []int{8, 9, 10}
+	slice = append(slice, newSlice...) // Estos 3 puntos son para que agregue los elementos de ese slice de forma independiente al antiguo slice
+	fmt.Println(slice)
 }
 
 func main() {
@@ -288,4 +323,9 @@ func main() {
 	fmt.Printf("\n\n\n")
 	fmt.Println("##### Uso de defer, break y continue #####")
 	usoDeferBreakContinue()
+
+	// Uso de arrays y slices
+	fmt.Printf("\n\n\n")
+	fmt.Println("##### arrays y slices #####")
+	usoArraysSlices()
 }
