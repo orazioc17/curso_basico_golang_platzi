@@ -269,9 +269,9 @@ func usoArraysSlices() {
 	fmt.Println(slice)
 }
 
-func isPalindromo(text string) string{
+func isPalindromo(text string) string {
 	var textReversed string
-	for i := len(text) - 1; i>= 0; i-- {
+	for i := len(text) - 1; i >= 0; i-- {
 		textReversed += string(text[i]) // Aqui se convierte a string porque si no retornaria el codigo ascii
 	}
 
@@ -289,7 +289,7 @@ func recorridoArraysSlices() {
 		fmt.Println(index, value)
 	}
 	// Si solo queremos el indice, al usar solo una variable con range, esta devuelve unicamente el indice
-	
+
 	fmt.Println()
 	fmt.Println("ana: ", isPalindromo("ana"))
 	fmt.Println("arepera: ", isPalindromo("arepera"))
@@ -314,9 +314,28 @@ func usoMaps() {
 	fmt.Println("Edad de Jose: ", value)
 
 	// Saber si un valor existe
-	value, ok := mapa["Maria"] // Esta llave no existe en el mapa, pero no generara ningun error, sino que retornara un 0, ok retornara true o false dependiendo de si existe o no
+	value, ok := mapa["Maria"]                    // Esta llave no existe en el mapa, pero no generara ningun error, sino que retornara un 0, ok retornara true o false dependiendo de si existe o no
 	fmt.Println("Valor inexistente: ", value, ok) // "0 false"
 
+}
+
+type car struct {
+	brand string
+	year  int
+}
+
+func usoStruct() {
+	// Creando un struct
+	myCar := car{brand: "Ford", year: 2020}
+	fmt.Println(myCar)
+
+	// Otra manera
+	var myCar2 car
+	fmt.Println(myCar2)
+	myCar2.brand = "Ferrari"
+	fmt.Println(myCar2)
+	myCar2.year = 2022
+	fmt.Println(myCar2)
 }
 
 func main() {
@@ -388,4 +407,9 @@ func main() {
 	fmt.Printf("\n\n\n")
 	fmt.Println("##### Uso de maps #####")
 	usoMaps()
+
+	// Uso de structs (las clases en Go)
+	fmt.Printf("\n\n\n")
+	fmt.Println("##### Uso de structs #####")
+	usoStruct()
 }
