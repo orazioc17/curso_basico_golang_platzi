@@ -2,6 +2,23 @@ package main
 
 import "fmt"
 
+func normalFunction(message string) {
+	fmt.Println(message)
+}
+
+// Si 2 argumentos son del mismo tipo, la mejor practica es que se declaren juntos y luego el tipo
+func tripleArgument(a, b int, c string) {
+	fmt.Println(a, b, c)
+}
+
+func returnValue(a int) int {
+	return a * 2
+}
+
+func doubleReturn(a int) (b, c int) {
+	return a, a * 2
+}
+
 func main() {
 	// Declaracion de constantes
 	const pi float64 = 3.14
@@ -75,7 +92,7 @@ func main() {
 	nombre := "Platzi"
 	cursos := 500
 
-	// La buena practica es agregar el tipo de dato correspondiente, pero si no se tiene cereza del tipo de dato que se 
+	// La buena practica es agregar el tipo de dato correspondiente, pero si no se tiene cereza del tipo de dato que se
 	// va a imprimir, se puede usar $v
 	fmt.Printf("%s tiene mas de %d cursos\n", nombre, cursos)
 	fmt.Printf("%v tiene mas de %v cursos\n", nombre, cursos)
@@ -87,5 +104,20 @@ func main() {
 	// Conocer el tipo de dato de una variable
 	fmt.Printf("helloMessahe: %T\n", helloMessage)
 	fmt.Printf("Cursos: %T\n", cursos)
-	
+
+	// Uso de funciones
+	fmt.Printf("\n\n\n")
+	fmt.Println("Uso de funciones")
+	normalFunction("Esto es un mensaje")
+	tripleArgument(3, 5, "Esto es una cadena")
+
+	returnedValue := returnValue(2)
+	fmt.Println(returnedValue)
+
+	value1, value2 := doubleReturn(3)
+	fmt.Printf("Value 1: %d\nValue2: %d\n", value1, value2)
+
+	// De esta forma se descarte uno de los valores retornados por la funcion
+	value1, _ = doubleReturn(10)
+	fmt.Printf("Value 1: %d\n", value1) 
 }
