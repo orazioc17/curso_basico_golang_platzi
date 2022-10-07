@@ -7,6 +7,11 @@ import (
 	"strconv"
 )
 
+func separacion(nombre string) {
+	fmt.Printf("\n\n\n")
+	fmt.Printf("##### %s #####\n", nombre)
+}
+
 func normalFunction(message string) {
 	fmt.Println(message)
 }
@@ -347,28 +352,61 @@ func usoModulos() {
 	pk.PrintMessage("Hola Platzi")
 }
 
+type pc struct {
+	ram   int
+	disk  int
+	brand string
+}
+
+func (myPC pc) ping() {
+	fmt.Println(myPC.brand, "Pong")
+}
+
+// Aqui se esta haciendo uso del puntero, pasandole el valor que se encuentra en la direccion de memoria de pc?
+func (myPC *pc) duplicateRam() {
+	myPC.ram *= 2
+}
+
+func usoPunteros() {
+	a := 50
+	b := &a // ESto seria asignarle a "b" el puntero de "a", es decir, la direccion de memoria donde esta guardado "a"
+
+	fmt.Println(a)
+	fmt.Println(b)  // Esto imprimira la direccion de memoria
+	fmt.Println(*b) // Y el asterisco accede al valor que esta en esa direccion de memoria
+
+	// Ahora cambiamos el valor al que apunta b
+	*b = 100
+	fmt.Println("a: ", a) // Y por lo tanto el valor de a cambio tambien
+
+	// Instanciando pc
+	myPc := pc{ram: 16, disk: 200, brand: "msi"}
+	fmt.Println("myPc: ", myPc)
+
+	myPc.ping()
+
+	fmt.Println("Vieja ram: ", myPc.ram)
+
+	myPc.duplicateRam()
+
+	fmt.Println("Nueva ram: ", myPc.ram)
+}
+
 func main() {
 	// Variables, constantes y Zero Values
 	fmt.Println("##### Variables, constantes y zero values #####")
 	variablesConstantesZeroValues()
 
 	// Operadores Aritmeticos
-	fmt.Println()
-	fmt.Println()
-	fmt.Println()
-	fmt.Println("##### Operadores Aritmeticos #####")
+	separacion("#####Operadores Aritmeticos")
 	operadoresAritmeticos()
 
 	// Paquete fmt
-	fmt.Println()
-	fmt.Println()
-	fmt.Println()
-	fmt.Println("##### Paquete fmt #####")
+	separacion("Paquete fmt")
 	usoFmt()
 
 	// Uso de funciones
-	fmt.Printf("\n\n\n")
-	fmt.Println("##### Uso de funciones #####")
+	separacion("Uso de funciones")
 	normalFunction("Esto es un mensaje")
 	tripleArgument(3, 5, "Esto es una cadena")
 
@@ -383,47 +421,42 @@ func main() {
 	fmt.Printf("Value 1: %d\n", value1)
 
 	// Uso de ciclo for
-	fmt.Printf("\n\n\n")
-	fmt.Println("##### Uso de ciclos for #####")
+	separacion("Uso de ciclos for")
 	usoCiclosFor()
 
 	// Uso de condicional if
-	fmt.Printf("\n\n\n")
-	fmt.Println("##### Uso de condicional if #####")
+	separacion("Uso de condicional if")
 	usoIf()
 
 	// Uso de switch
-	fmt.Printf("\n\n\n")
-	fmt.Println("##### Uso de switch #####")
+	separacion("Uso de switch")
 	usoSwitch()
 
 	// Uso de defer, break y continue
-	fmt.Printf("\n\n\n")
-	fmt.Println("##### Uso de defer, break y continue #####")
+	separacion("Uso de defer, break y continue")
 	usoDeferBreakContinue()
 
 	// Uso de arrays y slices
-	fmt.Printf("\n\n\n")
-	fmt.Println("##### arrays y slices #####")
+	separacion("arrays y slices")
 	usoArraysSlices()
 
 	// Recorrido de arrays y slices
-	fmt.Printf("\n\n\n")
-	fmt.Println("##### Recorrido de arrays y slices #####")
+	separacion("Recorrido de arrays y slices")
 	recorridoArraysSlices()
 
 	// Uso de maps
-	fmt.Printf("\n\n\n")
-	fmt.Println("##### Uso de maps #####")
+	separacion("Uso de maps")
 	usoMaps()
 
 	// Uso de structs (las clases en Go)
-	fmt.Printf("\n\n\n")
-	fmt.Println("##### Uso de structs #####")
+	separacion("Uso de structs")
 	usoStruct()
 
 	// Uso de modulos
-	fmt.Printf("\n\n\n")
-	fmt.Println("##### Uso de modulos #####")
+	separacion("Uso de modulos")
 	usoModulos()
+
+	// Uso de punteros
+	separacion("Uso de punteros")
+	usoPunteros()
 }
