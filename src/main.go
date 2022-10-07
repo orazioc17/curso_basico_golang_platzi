@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"strconv"
+	"sync"
 )
 
 func separacion(nombre string) {
@@ -441,6 +442,43 @@ func usoInterfaces() {
 	fmt.Println(myInterface...)
 }
 
+func say(text string, wg *sync.WaitGroup) {
+	defer wg.Done()
+	fmt.Println(text)
+}
+
+func usoGoroutines() {
+
+	// Esta variable permite interactuar de forma primitiva con las goroutine pero es mas dificil de mantener
+	var wg sync.WaitGroup
+
+	// say("Hello")
+	fmt.Println("Hello")
+
+	/*
+		Con esto indicamos que estamos agregando una coroutine al WaitGroup, lo que nos ayudara a esperar a su
+		ejecucion
+	*/
+	wg.Add(1)
+	go say("World", &wg)
+	wg.Wait()
+
+	// Funcion anonima:
+	//go func() {
+	//	fmt.Println("Adios")
+	//}()
+
+	// Funcion anonima con datos de entrada
+	//go func(text string) {
+	//	fmt.Println(text)
+	//}("Adios")
+
+	//time.Sleep(time.Second * 1)
+
+	// Se puede usar sleep para que le de tiempo a la goroutine de que se ejecute, pero no es eficiente
+	// time.Sleep(time.Second * 1)
+}
+
 func main() {
 	// Variables, constantes y Zero Values
 	fmt.Println("##### Variables, constantes y zero values #####")
@@ -516,4 +554,8 @@ func main() {
 	// Uso de interfaces
 	separacion("Uso de interfaces")
 	usoInterfaces()
+
+	// Uso de goroutines
+	separacion("Uso de goroutines")
+	usoGoroutines()
 }
