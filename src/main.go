@@ -1,6 +1,7 @@
 package main
 
 import (
+	pk "curso_golang_basico_platzi/src/mypackage" // Con pk podemos asignarle el nombre q queramos a la importacion
 	"fmt"
 	"log"
 	"strconv"
@@ -338,6 +339,14 @@ func usoStruct() {
 	fmt.Println(myCar2)
 }
 
+func usoModulos() {
+	var myCar pk.CarPublic
+	myCar.Brand = "Ferrari"
+	fmt.Println(myCar)
+
+	pk.PrintMessage("Hola Platzi")
+}
+
 func main() {
 	// Variables, constantes y Zero Values
 	fmt.Println("##### Variables, constantes y zero values #####")
@@ -412,4 +421,9 @@ func main() {
 	fmt.Printf("\n\n\n")
 	fmt.Println("##### Uso de structs #####")
 	usoStruct()
+
+	// Uso de modulos
+	fmt.Printf("\n\n\n")
+	fmt.Println("##### Uso de modulos #####")
+	usoModulos()
 }
