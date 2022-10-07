@@ -392,6 +392,17 @@ func usoPunteros() {
 	fmt.Println("Nueva ram: ", myPc.ram)
 }
 
+// Practicamente se esta sobreescribiendo la funcion base String que trae por defecto el struct
+func (myPC pc) String() string {
+	// Recordar que Sprintf no imprime directamente en consola, sino que crea un string con el resultado que de
+	return fmt.Sprintf("Tengo %d GB RAM, %d GB Disco y es una %s", myPC.ram, myPC.disk, myPC.brand)
+}
+
+func usoStringers() {
+	myPC := pc{ram: 16, disk: 100, brand: "msi"}
+	fmt.Println(myPC)
+}
+
 func main() {
 	// Variables, constantes y Zero Values
 	fmt.Println("##### Variables, constantes y zero values #####")
@@ -459,4 +470,8 @@ func main() {
 	// Uso de punteros
 	separacion("Uso de punteros")
 	usoPunteros()
+
+	// Uso de stringers
+	separacion("Uso de stringers")
+	usoStringers()
 }
