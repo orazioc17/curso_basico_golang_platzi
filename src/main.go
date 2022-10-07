@@ -403,6 +403,44 @@ func usoStringers() {
 	fmt.Println(myPC)
 }
 
+type figuras2D interface {
+	area() float64
+}
+
+type cuadrado struct {
+	base float64
+}
+
+type rectangulo struct {
+	base   float64
+	altura float64
+}
+
+// Una buena practica es nombrar a nuestro receptor con la primera letra del struct o interface a la que estamos haciendo referencia
+func (c cuadrado) area() float64 {
+	return c.base * c.base
+}
+
+func (r rectangulo) area() float64 {
+	return r.base * r.altura
+}
+
+func calcular(f figuras2D) {
+	fmt.Println("Area: ", f.area())
+}
+
+func usoInterfaces() {
+	myCuadrado := cuadrado{base: 2}
+	myRectangulo := rectangulo{base: 2, altura: 4}
+
+	calcular(myCuadrado)
+	calcular(myRectangulo)
+
+	// Lista interfaces
+	myInterface := []interface{}{"Hola", 12, 3.6}
+	fmt.Println(myInterface...)
+}
+
 func main() {
 	// Variables, constantes y Zero Values
 	fmt.Println("##### Variables, constantes y zero values #####")
@@ -474,4 +512,8 @@ func main() {
 	// Uso de stringers
 	separacion("Uso de stringers")
 	usoStringers()
+
+	// Uso de interfaces
+	separacion("Uso de interfaces")
+	usoInterfaces()
 }
