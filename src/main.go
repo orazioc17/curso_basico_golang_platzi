@@ -489,7 +489,44 @@ func usoChannels() {
 	fmt.Println("Hello")
 	go saySay("Bye", channel)
 
-	fmt.Println(<- channel)
+	fmt.Println(<-channel)
+}
+
+func saveMessage(text string, c chan string) {
+	c <- text
+}
+
+func usoRangeCloseSelect() {
+	channel := make(chan string, 2) // El 2 indica que manejara 2 datos a la vez
+	channel <- "Mensaje 1"
+	channel <- "Mensaje 2"
+
+	fmt.Println(len(channel), cap(channel))
+	close(channel)
+
+	// c <- "Mensaje 3" ---- Esto no seria posible porque el canal ya esta cerrado, y si no lo estuviera, igualmente solo admite maximo 2 datos
+	for message := range channel {
+		fmt.Println(message)
+	}
+
+	// Select
+	email1 := make(chan string)
+	email2 := make(chan string)
+
+	go saveMessage("Mensaje 1", email1)
+	go saveMessage("Mensaje 2", email2)
+
+	// Aqui no sabriamos a ciencia cierta cual de los 2 canales va a responder primero, por lo que se empieza a utilizar select
+
+	for i := 0; i < 2; i++ {
+		select {
+		case m1 := <- email1:
+			fmt.Println("Email recibido de email1", m1)
+		case m1 := <- email2:
+			fmt.Println("Email recibido de email2", m1)
+		}
+	}
+
 }
 
 func main() {
@@ -575,4 +612,8 @@ func main() {
 	// Uso de channels
 	separacion("Uso de channels")
 	usoChannels()
+
+	// Uso de Range, Close y Select en Channels
+	separacion("Uso de Range, Close y Select en Channels")
+	usoRangeCloseSelect()
 }
