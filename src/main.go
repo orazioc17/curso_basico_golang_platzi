@@ -479,6 +479,19 @@ func usoGoroutines() {
 	// time.Sleep(time.Second * 1)
 }
 
+func saySay(text string, c chan string) {
+	c <- text // El simbolo <- es para indicar que se va a guardar un dato en ese canal
+
+}
+
+func usoChannels() {
+	channel := make(chan string, 1)
+	fmt.Println("Hello")
+	go saySay("Bye", channel)
+
+	fmt.Println(<- channel)
+}
+
 func main() {
 	// Variables, constantes y Zero Values
 	fmt.Println("##### Variables, constantes y zero values #####")
@@ -558,4 +571,8 @@ func main() {
 	// Uso de goroutines
 	separacion("Uso de goroutines")
 	usoGoroutines()
+
+	// Uso de channels
+	separacion("Uso de channels")
+	usoChannels()
 }
